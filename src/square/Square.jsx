@@ -76,13 +76,16 @@ const Square = ({
 				setIcon(crossSvg);
 			}
 		}
+		const myCurrentPlayer = currentPlayer;
 		setCurrentPlayer(currentPlayer === 'circle' ? 'cross' : 'circle');
 		setGameState((preState) => {
-			const newState = [...preState];
-			console.log(preState);
-			console.log(id);
-			console.log(newState);
-			return preState;
+			let newState = [...preState];
+			const rowIndex = Math.floor(id / 3);
+			const colIndex = id % 3;
+			newState[rowIndex][colIndex]=myCurrentPlayer;
+			
+			return newState;
+			
 		});
 	};
 
